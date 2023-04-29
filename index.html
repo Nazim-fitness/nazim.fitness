@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to your fitness journey</title>
+    <!-- link fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- link custom css -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  text-transform: capitalize;
+  transition: all 0.3s linear;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+html::-webkit-scrollbar-track {
+  background: #000;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgb(0, 85, 74);
+}
+
+body {
+  background: #000;
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.heading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 0.1rem;
+  width: 100%;
+  background: #aaa;
+  z-index: -1;
+}
+.heading span {
+  font-size: 3rem;
+  color: rgb(0, 85, 74);
+  background: #000;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem 1rem 2.8rem;
+  background: linear-gradient(135deg, rgb(0, 85, 74) 93%, transparent 90%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.header {
+  position: fixed;
+  background: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9%;
+  z-index: 10;
+}
+.header .logo {
+  font-weight: bolder;
+  color: #fff;
+  font-size: 3rem;
+}
+.header .logo span {
+  color: rgb(0, 85, 74);
+}
+.header .navbar a {
+  font-size: 1.7rem;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  color: #fff;
+}
+.header .navbar a:hover {
+  background: rgb(0, 85, 74);
+}
+
+#home {
+  padding: 0rem;
+  margin-top: 5.5rem;
+}
+#home .slide {
+  min-height: 100vh;
+  background-size: cover !important;
+  background-position: center !important;
+  padding: 2rem 9%;
+  display: flex;
+  align-items: center;
+}
+#home .slide .content {
+  width: 60rem;
+}
+#home .slide span {
+  color: rgb(0, 85, 74);
+  font-size: 2rem;
+  display: block;
+}
+#home .slide h3 {
+  font-size: 5rem;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+#about {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rem;
+}
+#about .image {
+  flex: 1 1 42rem;
+  position: relative;
+}
+#about .image::before, #about .image::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: rgb(0, 85, 74);
+  height: 15rem;
+  width: 15rem;
+}
+#about .image::before {
+  top: 0;
+  left: 0;
+}
+#about .image::after {
+  bottom: 0;
+  right: 0;
+}
+#about .image img {
+  width: 100%;
+  padding: 2rem;
+}
+#about .content {
+  flex: 1 1 42rem;
+}
+#about .content span {
+  font-size: 2rem;
+  color: rgb(0, 85, 74);
+}
+#about .content .title {
+  font-size: 4rem;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+#about .content p {
+  font-size: 1.5rem;
+  color: #aaa;
+}
+#about .content .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+#about .content .box-container .box {
+  flex: 1 1 20rem;
+}
+#about .content .box-container h3 {
+  font-size: 2rem;
+  color: #fff;
+}
+#about .content .box-container i {
+  padding-right: 1.5rem;
+  color: rgb(0, 85, 74);
+}
+
+#features .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  gap: 1.5rem;
+  gap: 0;
+}
+#features .box-container .box {
+  background: #111;
+}
+#features .box-container .box.second {
+  display: flex;
+  flex-flow: column-reverse;
+}
+#features .box-container .box:hover .image img {
+  transform: scale(1.1);
+}
+#features .box-container .box .image {
+  height: 30rem;
+  width: 100%;
+  overflow: hidden;
+}
+#features .box-container .box .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#features .box-container .box .content {
+  padding: 2rem;
+  text-align: center;
+}
+#features .box-container .box .content img {
+  height: 9rem;
+  margin-bottom: 1rem;
+  filter: invert(1);
+}
+#features .box-container .box .content h3 {
+  font-size: 2rem;
+  color: rgb(0, 85, 74);
+}
+#features .box-container .box .content p {
+  line-height: 2;
+  font-size: 1.5rem;
+  color: #aaa;
+  padding: 1rem 0;
+}
+
+#pricing .plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  gap: 1.5rem;
+}
+#pricing .plans .plan {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #111 93%, transparent 90%);
+  height: 48rem;
+}
+#pricing .plans .plan h3 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #fff;
+}
+#pricing .plans .plan .price {
+  font-size: 5rem;
+  font-weight: bolder;
+  color: rgb(0, 85, 74);
+}
+#pricing .plans .plan .price span {
+  color: #fff;
+  font-size: 2rem;
+}
+#pricing .plans .plan .list {
+  padding: 1rem 0;
+}
+#pricing .plans .plan .list p {
+  line-height: 2;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  color: #fff;
+}
+#pricing .plans .plan .list p i {
+  padding-right: 1rem;
+  color: rgb(0, 85, 74);
+}
+
+#trainer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  gap: 1.5rem;
+}
+#trainer .box-container .box {
+  height: 40rem;
+  overflow: hidden;
+  position: relative;
+}
+#trainer .box-container .box:hover .content {
+  transform: translateY(0);
+}
+#trainer .box-container .box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#trainer .box-container .box .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  padding: 2rem;
+  transform: translateY(6.5rem);
+}
+#trainer .box-container .box .content span {
+  font-size: 1.5rem;
+  color: rgb(0, 85, 74);
+}
+#trainer .box-container .box .content h3 {
+  font-size: 2rem;
+  color: #fff;
+  padding-top: 1.5rem;
+}
+#trainer .box-container .box .content .share {
+  border-top: 0.1rem solid #fff;
+  padding-top: 2rem;
+  margin-top: 1.5rem;
+}
+#trainer .box-container .box .content .share a {
+  font-size: 2rem;
+  color: #fff;
+  margin-right: 1rem;
+}
+#trainer .box-container .box .content .share a:hover {
+  color: rgb(0, 85, 74);
+}
+
+#banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../banner-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+}
+#banner span {
+  font-size: 2.2rem;
+  color: rgb(0, 85, 74);
+  font-weight: bolder;
+}
+#banner h3 {
+  padding-top: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+}
+#banner P {
+  margin: 1rem auto;
+  max-width: 60rem;
+  font-size: 1.5rem;
+  color: #aaa;
+}
+
+#location .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  gap: 1.5rem;
+}
+#location .box-container .box h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(0, 85, 74);
+}
+#location .box-container .box p {
+  font-size: 3rem;
+  letter-spacing: 3px;
+  line-height: 2;
+  color: #fff;
+}
+#location .box-container .map {
+  position: relative;
+  height: 47rem;
+  border: 1rem solid rgb(0, 85, 74);
+}
+#location .box-container .map iframe {
+  position: absolute;
+  width: 100%;
+}
+
+#footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1.5rem;
+}
+#footer .box-container .box h3 {
+  font-size: 2.2rem;
+  color: #fff;
+  padding: 1rem 0;
+}
+#footer .box-container .box .links {
+  font-size: 2.2rem;
+  display: block;
+  color: #aaa;
+  padding: 1rem 0;
+}
+#footer .box-container .box .links:hover {
+  color: rgb(0, 85, 74);
+}
+#footer .box-container .box p {
+  font-size: 1.5rem;
+  color: #aaa;
+  padding: 1rem 0;
+}
+#footer .box-container .box p i {
+  padding-right: 0.5rem;
+  color: rgb(0, 85, 74);
+}
+#footer .box-container .box .share {
+  padding: 1rem 0;
+}
+#footer .box-container .box .share a {
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  color: #fff;
+  font-size: 1.7rem;
+  background: #111;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  text-align-last: center;
+}
+#footer .box-container .box .share a:hover {
+  background: rgb(0, 85, 74);
+}
+#footer .box-container .box form .email {
+  margin-bottom: 1rem;
+  width: 100%;
+  background-color: #111;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: none;
+  border: 0.1rem solid #000;
+}
+#footer .box-container .box form .email:focus {
+  border: 0.1rem solid rgb(0, 85, 74);
+}
+
+.credit {
+  font-size: 1.4rem;
+  padding: 2rem;
+  text-align: center;
+  background: #111;
+  color: #fff;
+}
+.credit span {
+  color: rgb(0, 85, 74);
+}/*# sourceMappingURL=style.css.map */
+    </style>
+
+</head>
+
+<body>
+    <!-- header start -->
+
+    <header class="header">
+        <a href="#" class="logo"><span>Nazim</span> Fitness</a>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#features">features</a>
+            <a href="#pricing">pricing</a>
+            <a href="#trainer">trainer</a>
+            <a href="#location">location</a>
+        </nav>
+    </header>
+
+    <!-- header end -->
+
+    <!-- home start -->
+    <setion id="home">
+        <div class="slide" style="background: url(home-haider-2.jpeg) no-repeat;">
+            <div class="content">
+                <span>be strong, be fit</span>
+                <h3>You have to think about it before you can do it...
+                </h3>
+                <a href="" class="btn">start now</a>
+            </div>
+        </div>
+
+
+        </section>
+
+        <!-- home end -->
+
+        <!-- about start -->
+
+        <section id="about">
+
+            <div class="image">
+                <img src="about-img.jpg" alt="img">
+            </div>
+
+            <div class="content">
+                <span>about us</span>
+                <h3 class="title">You should never stay at the same level</h3>
+                <p>Believe in yourself and all that you are. Know that there is something inside you that is greater
+                    than any obstacle..</p>
+                <div class="box-container">
+                    <div class="box">
+                        <h3><i class="fas fa-check"></i>Mind and body</h3>
+                        <p>True fitness is achieved when the mind and body are trained together, for they are an
+                            inseparable team</p>
+                    </div>
+                    <div class="box">
+                        <h3><i class="fas fa-check"></i>Diet</h3>
+                        <p>Eating well is not a punishment, it's a privilege - a privilege to fuel your body and mind
+                            with the nutrients they need to perform at their best.</p>
+                    </div>
+                    <div class="box">
+                        <h3><i class="fas fa-check"></i>Workout</h3>
+                        <p>At Nazim fitness, we believe that fitness is not just about working out - it's about making a
+                            commitment to yourself and your health. Our team of expert trainers and staff are dedicated
+                            to providing you with the guidance and support you need to achieve your goals, whether
+                            you're a beginner or a seasoned athlete.</p>
+                    </div>
+                    <div class="box">
+                        <h3><i class="fas fa-check"></i>Professional</h3>
+                        <p>Our trainers are not only experts in their field, but they are also passionate about fitness
+                            and helping others. They take the time to get to know each member, their fitness level, and
+                            their goals, to create personalized workout plans that are tailored to their specific needs
+                        </p>
+                    </div>
+                </div>
+                <a href="#" class="btn">read more</a>
+            </div>
+        </section>
+
+        <!-- about end -->
+
+        <!-- features start -->
+
+        <section id="features">
+
+            <h1 class="heading"><span>Gym features</span></h1>
+
+            <div class="box-container">
+
+                <div class="box">
+
+                    <div class="image">
+                        <img src="f-img-1.jpg" alt="img">
+                    </div>
+                    <div class="content">
+                        <img src="icon-1.png" alt="">
+                        <h3>body building</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, assumenda!</p>
+
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="box second">
+
+                    <div class="image">
+                        <img src="f-img-2.jpg" alt="img">
+                    </div>
+                    <div class="content">
+                        <img src="icon-2.png" alt="">
+                        <h3>Men's training</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, assumenda!</p>
+
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+                <div class="box">
+
+                    <div class="image">
+                        <img src="f-img-3.jpg" alt="img">
+                    </div>
+                    <div class="content">
+                        <img src="icon-3.png" alt="">
+                        <h3>Women's training</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, assumenda!</p>
+
+                        <a href="#" class="btn">read more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- features end -->
+
+        <!-- pricing start -->
+
+        <section id="pricing">
+
+            <div class="heading"><span>pricing</span></div>
+            <div class="plans">
+                <div class="plan basic">
+                    <h3>basic plan</h3>
+                    <div class="price"><span>₹</span>500<span>/mo</span></div>
+                    <div class="list">
+                        <p> <i class="fas fa-check"></i> body weight training</p>
+                        <p> <i class="fas fa-check"></i> common trainer</p>
+                        <p> <i class="fas fa-check"></i> cardio</p>
+                        <p> <i class="fas fa-check"></i> weight lifting</p>
+                        <p> <i class="fas fa-check"></i> tips</p>
+                    </div>
+                    <a href="#" class="btn">get started</a>
+                </div>
+                <div class="plan premium">
+                    <h3>premium plan</h3>
+                    <div class="price"><span>₹</span>800<span>/mo</span></div>
+                    <div class="list">
+                        <p> <i class="fas fa-check"></i> Personal training</p>
+                        <p> <i class="fas fa-check"></i> cardio</p>
+                        <p> <i class="fas fa-check"></i> weight lifting</p>
+                        <p> <i class="fas fa-check"></i> diet plans</p>
+                        <p> <i class="fas fa-check"></i> HIIT workouts</p>
+                    </div>
+                    <a href="#" class="btn">get started</a>
+                </div>
+                <div class="plan platinum">
+                    <h3>platinum plan</h3>
+                    <div class="price"><span>₹</span>1200<span>/mo</span></div>
+                    <div class="list">
+                        <p> <i class="fas fa-check"></i> Personal training</p>
+                        <p> <i class="fas fa-check"></i> premium benifits</p>
+                        <p> <i class="fas fa-check"></i> diet plans</p>
+                        <p> <i class="fas fa-check"></i> daily body analysing</p>
+                        <p> <i class="fas fa-check"></i> 24/7 assistance</p>
+                    </div>
+                    <a href="#" class="btn">get started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- pricing end -->
+
+        <!-- trainer strat -->
+
+        <section id="trainer">
+            <h1 class="heading"><span>expert trainers</span></h1>
+
+            <div class="box-container">
+                <div class="box">
+                    <img src="trainer-1.png" alt="">
+                    <div class="content">
+                        <span>expert trainer</span>
+                        <h3>Haider Malik</h3>
+                        <div class="share">
+                            <a href="" class="fab fa-facebook-f"></a>
+                            <a href="" class="fab fa-twitter"></a>
+                            <a href="" class="fab fa-instagram"></a>
+                            <a href="" class="fab fa-youtube"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="trainer-2.jpg" alt="">
+                    <div class="content">
+                        <span>expert trainer</span>
+                        <h3>Nazim Ansari</h3>
+                        <div class="share">
+                            <a href="" class="fab fa-facebook-f"></a>
+                            <a href="" class="fab fa-twitter"></a>
+                            <a href="" class="fab fa-instagram"></a>
+                            <a href="" class="fab fa-youtube"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="trainer-1.png" alt="">
+                    <div class="content">
+                        <span>expert trainer</span>
+                        <h3>Haider Malik</h3>
+                        <div class="share">
+                            <a href="" class="fab fa-facebook-f"></a>
+                            <a href="" class="fab fa-twitter"></a>
+                            <a href="" class="fab fa-instagram"></a>
+                            <a href="" class="fab fa-youtube"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="trainer-2.jpg" alt="">
+                    <div class="content">
+                        <span>expert trainer</span>
+                        <h3>Nazim Ansari</h3>
+                        <div class="share">
+                            <a href="" class="fab fa-facebook-f"></a>
+                            <a href="" class="fab fa-twitter"></a>
+                            <a href="" class="fab fa-instagram"></a>
+                            <a href="" class="fab fa-youtube"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- trainer end -->
+
+        <!-- banner strat -->
+
+        <section id="banner">
+            <span>join us now</span>
+            <h3>get upto 50% discount</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid iusto architecto doloremque
+                perspiciatis officiis veniam, optio ipsa totam magni ea.</p>
+            <a href="#" class="btn">get discount</a>
+        </section>
+
+        <!-- location start -->
+
+        <section id="location">
+
+            <div class="heading"><span>location of the gym</span></div>
+
+            <div class="box-container">
+
+                <div class="box">
+                    <p>Block C, D1, Gali No. 2, Shriram Colony, Ranjit Nagar, Sonia Vihar, New Delhi, Delhi 110094</p>
+                </div>
+                <div class="box map">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d567.2518415240563!2d77.25092596356609!3d28.710946182886087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfc2f6ead6d43%3A0x7d3419667dcdcbc0!2sHaji%20Aas%20Mohammad%20Hotel!5e0!3m2!1sen!2sin!4v1682605328618!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- location end -->
+
+        <!-- banner end -->
+
+        <!-- footer strat -->
+
+        <section id="footer">
+
+            <div class="box-container">
+
+                <div class="box">
+                    <h3>quick links</h3>
+                    <a class="links"href="#home">home</a>
+                    <a class="links" href="#about">about</a>
+                    <a class="links" href="#features">features</a>
+                    <a class="links" href="#pricing">pricing</a>
+                    <a class="links" href="#trainer">trainer</a>
+                    <a class="links" href="#location">location</a>
+                </div>
+                <div class="box">
+
+                    <h3>opening hours</h3>
+                    <p>monday : <i> 5:00am - 12:00pm</i></p>
+                    <p>tuesday : <i> 5:00am - 12:00pm</i></p>
+                    <p>wednesday : <i> 5:00am - 12:00pm</i></p>
+                    <p>thursday : <i> 5:00am - 12:00pm</i></p>
+                    <p>friday : <i> 5:00am - 12:00pm</i></p>
+                    <p>saturday : <i> 5:00am - 12:00pm</i></p>
+                    <p>sunday : <i> closed</i></p>
+                </div>
+                <div class="box">
+
+                    <h3>contact us</h3>
+                    <p> <i class="fas fa-phone"> +919899120709</i></p>
+                    <p> <i class="fas fa-phone"> +919899120709</i></p>
+                    <p> <i class="fas fa-envelope"> +nazim@fitness.com</i></p>
+                    <p> <i class="fas fa-map"> Delhi, india - 110094</i></p>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-youtube"></a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <h3>news letter</h3>
+                    <p>subscribe for latest updates</p>
+                    <form action="">
+                        <input type="email" name="" class="email" placeholder="enter your email">
+                        <input type="submit" value="subscribe" class="btn">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <div class="credit">Created by <span>Abdus Samad</span>| all right reserved</div>
+        <!-- footer end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- custome js  -->
+        <script src="js/index.js"></script>
+</body>
+
+</html>
